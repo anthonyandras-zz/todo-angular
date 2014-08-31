@@ -12,6 +12,21 @@ items: [
 };
 // name of app, dependencies, which are often admited by accident
 var todoApp = angular.module("todoApp", new Array());
+
+// create a custom filter to allow the user to determine if
+// they want to see done items or not.
+todoApp.filter("checkedItems", function() {
+  return function (items, showComplete) {
+    var results = new Array();
+    angular.forEach(items, function(item) {
+      if (item.done == false || showComplete == true) {
+      	results.push(item);
+      }
+    });
+    return results;
+  };
+});
+
 //create a controller for our application
 todoApp.controller("ToDoCtrl", function($scope){
   $scope.todo = model;
