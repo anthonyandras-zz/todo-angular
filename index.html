@@ -12,7 +12,7 @@
   <header class="page-header">
     <h1>
       {{todo.user}} To Do List
-      <span class="label label-default">{{ todo.items.length }}</span>
+      <span class="label label-default" ng-hide="incompleteCount() == 0">{{ incompleteCount() }}</span>
     </h1>
   </header>
   <div class="panel">
