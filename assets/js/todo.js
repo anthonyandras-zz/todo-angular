@@ -23,4 +23,18 @@ todoApp.controller("ToDoCtrl", function($scope){
     });
     return count;
   };
+
+  // will determine bootstrap-css style of item count 
+  // based on the number of incomplete items.
+  $scope.warningLevel = function() {
+    return $scope.incompleteCount() < 3 ? "label-success" : "label-warning";
+  };
+
+  // add a new menu item 
+  // TODO - refactor me to use local storage instead of this ghetto model
+  $scope.addNewItem = function(actionText) {
+    $scope.todo.items.push({action: actionText, done: false});
+    // clear out the input box after item has been added.
+    $scope.actionText = "";
+  };
 });	

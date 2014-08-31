@@ -12,14 +12,15 @@
   <header class="page-header">
     <h1>
       {{todo.user}} To Do List
-      <span class="label label-default" ng-hide="incompleteCount() == 0">{{ incompleteCount() }}</span>
+      <span class="label label-default" ng-class="warningLevel()" ng-hide="incompleteCount() == 0">{{ incompleteCount() }}</span>
     </h1>
   </header>
   <div class="panel">
     <section class="input-group">
-      <input class="form-control" />
+      <input class="form-control" ng-model="actionText"/>
       <span class="input-group-btn">
-        <button class="btn btn-default">Add</button>
+        <button class="btn btn-default" 
+                ng-click="addNewItem(actionText)">Add</button>
       </span>
     </section>
     <table class="table table-striped">
